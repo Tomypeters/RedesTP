@@ -64,5 +64,6 @@ MonoBehaviour:
   - ShotSound
   - HurtSound
   - HealSound
+  - Rotate
   DisableAutoOpenWizard: 1
   ShowSettings: 1

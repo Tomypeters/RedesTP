@@ -187,6 +187,11 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
         cam.transform.Rotate(y);
     }
 
+    public void Rotate(Vector3 x)
+    {
+        transform.Rotate(x);
+    }
+
     public void Move(Vector3 dir) //Funcion para hacer mover al jugador desde el server
     {
         if (!_alreadyMoving) //Si no me estoy moviendo
@@ -207,10 +212,6 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
         }
     }
 
-    public void Rotate(Vector3 x)
-    {
-        transform.Rotate(x);
-    }
 
     IEnumerator WaitToMoveAgain() //Corrutina para evitar que se mueva más de lo permitido
     {
@@ -277,6 +278,7 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
         {
             ServerTakeDamage(-50);
             RequestHealSound();
+            PhotonNetwork.Destroy(other.gameObject);
         }
 
 
@@ -291,8 +293,9 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
             if (life <= 0)
             {
                 ServerNetwork.Instance.RequestGameOver();
+                _view.RPC("Die", RpcTarget.AllBuffered);
+                
             }
-
         }
     }
 
@@ -302,6 +305,14 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
         {
             canJump = true;
         }
+    }
+
+    [PunRPC]
+    void Die()
+    {
+        _anim.SetBool("Dead", true);
+        var controller = FindObjectsOfType<Controller>().Select(x => x.myHero).Where(x => x == this).FirstOrDefault();
+        PhotonNetwork.Destroy(controller.gameObject);
     }
 
     public void Defeat()

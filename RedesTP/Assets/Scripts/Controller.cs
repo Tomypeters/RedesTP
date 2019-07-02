@@ -33,8 +33,8 @@ public class Controller : MonoBehaviourPun //El objeto que nos permite interactu
         //Hago una request constantemente al servidor para sincronizar mi movimiento.
         //ServerNetwork.Instance.PlayerRequestRotate(Input.GetAxis("Mouse X"), PhotonNetwork.LocalPlayer);
         ServerNetwork.Instance.PlayerRequestMove(new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0), PhotonNetwork.LocalPlayer);
-        ServerNetwork.Instance.PlayerRequestRotate(new Vector3(0,Input.GetAxis("Mouse X"),0), PhotonNetwork.LocalPlayer);
         ServerNetwork.Instance.PlayerRequestShoot(PhotonNetwork.LocalPlayer, Input.GetKey(KeyCode.Mouse0), cam.transform.forward);
         ServerNetwork.Instance.PlayerRequestJump(PhotonNetwork.LocalPlayer, Input.GetKey(KeyCode.Space));
+        ServerNetwork.Instance.PlayerRequestRotate(new Vector3(0,Input.GetAxis("Mouse X"),0), PhotonNetwork.LocalPlayer);
     }
 }
