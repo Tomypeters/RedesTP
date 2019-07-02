@@ -187,8 +187,11 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
 
     public void CameraRotation(Vector3 y)
     {
-        mesh.transform.Rotate(y);
-        cam.transform.Rotate(y);
+        //mesh.transform.Rotate(y);
+        //cam.transform.Rotate(y);
+
+        mesh.transform.localEulerAngles = new Vector3(y.x, y.y, y.z);
+        cam.transform.localEulerAngles = new Vector3(y.x, y.y, y.z);
     }
 
     public void Rotate(Vector3 x)
