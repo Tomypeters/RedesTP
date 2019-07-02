@@ -28,7 +28,7 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks //Nuestro manager
     {
         if (PhotonNetwork.CurrentRoom != null)
         {
-            if (PhotonNetwork.CurrentRoom.PlayerCount >= 2)
+            if (PhotonNetwork.CurrentRoom.PlayerCount >= 3)
             {
                 bground.SetActive(false);
                 loadingText.SetActive(false);

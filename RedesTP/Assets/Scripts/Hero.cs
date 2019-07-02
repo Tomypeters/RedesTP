@@ -179,10 +179,11 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
     public void CameraFollow()
     {
         y += Input.GetAxis("Mouse Y");
-        float clampeo = Mathf.Clamp(y, -90, 90);
+        y = Mathf.Clamp(y, -60, 60);
+
 
         cam.transform.position = cameraHolder.transform.position;
-        CameraRotation(new Vector3(clampeo, 0, 0));
+        CameraRotation(-new Vector3(y, 0, 0));
     }
 
     public void CameraRotation(Vector3 y)
