@@ -137,28 +137,6 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!1101 &1101828164379710630
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_Conditions: []
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 0}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 1
-  serializedVersion: 3
-  m_TransitionDuration: 0.25
-  m_TransitionOffset: 0
-  m_ExitTime: 0.8986486
-  m_HasExitTime: 1
-  m_HasFixedDuration: 1
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
 --- !u!1101 &1101857452344540718
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -270,11 +248,10 @@ AnimatorState:
   m_Name: Rifle Run To Dying
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: 1101828164379710630}
+  m_Transitions: []
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 1
+  m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
   m_SpeedParameterActive: 0
@@ -537,7 +514,7 @@ AnimatorStateMachine:
     m_Position: {x: 36, y: 612, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102133324139064818}
-    m_Position: {x: -324, y: 204, z: 0}
+    m_Position: {x: -432, y: 204, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102353971399167782}
     m_Position: {x: -264, y: 132, z: 0}
