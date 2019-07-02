@@ -248,7 +248,7 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
 
     public void RequestHurtSound()
     {
-        _view.RPC("ShotSound", RpcTarget.All);
+        _view.RPC("HurtSound", RpcTarget.All);
     }
 
     [PunRPC]
