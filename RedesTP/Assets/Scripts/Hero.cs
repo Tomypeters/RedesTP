@@ -311,13 +311,16 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
     void Die()
     {
         _anim.SetBool("Dead", true);
-        var controller = FindObjectsOfType<Controller>().Select(x => x.myHero).Where(x => x == this).FirstOrDefault();
-        PhotonNetwork.Destroy(controller.gameObject);
     }
 
     public void Defeat()
     {
         defeat.SetActive(true);
+        var controlers = FindObjectsOfType<Controller>();
+        foreach (var item in controlers)
+        {
+            Destroy(item);
+        }
         _view.RPC("Die", RpcTarget.AllBuffered);
     }
 
