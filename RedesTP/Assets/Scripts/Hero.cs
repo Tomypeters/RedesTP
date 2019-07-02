@@ -230,8 +230,19 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
             bullet.GetComponent<Bullet>().shooter = this;
             StartCoroutine(WaitToShootAgain());
             canShoot = false;
-            asourc.PlayOneShot(shot, 0.5f);
+            RequestShotSound();
         }
+    }
+
+    public void RequestShotSound()
+    {
+        _view.RPC("ShotSound", RpcTarget.All);
+    }
+
+    [PunRPC]
+    void ShotSound()
+    {
+        asourc.PlayOneShot(shot, 0.5f);
     }
 
     private void OnTriggerEnter(Collider other)
