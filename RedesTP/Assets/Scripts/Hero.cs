@@ -259,8 +259,15 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Bullet>() == null) return; //Si no tiene el componente bala, retorno
         if (!_view.IsMine) return; //Si no soy yo, retorno
+
+        if (other.gameObject.layer == 9)
+        {
+            ServerTakeDamage(-50);
+        }
+
+
+        if (other.GetComponent<Bullet>() == null) return; //Si no tiene el componente bala, retorno
         //if (!isFromThisClient) return;
         if (other.GetComponent<Bullet>().shooter != this) //Si la bala no es mia
         {
@@ -278,7 +285,6 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
 
     public void OnCollisionEnter(Collision collision)
     {
-        //if (!_view.IsMine) return;
         if (collision.gameObject.layer == 8)
         {
             canJump = true;
