@@ -77,7 +77,8 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
         if (isFromThisClient)
         {
             CameraFollow();
-            lifeText.text = life.ToString();
+
+            if(PhotonNetwork.CurrentRoom.PlayerCount >= 3)lifeText.text = life.ToString();
 
             if (kills > 0)
             {
@@ -344,4 +345,5 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
         PhotonNetwork.Destroy(gameObject);
         PhotonNetwork.Disconnect();
     }
+
 }
