@@ -1138,6 +1138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kills: 0
+  hurt: {fileID: 8300000, guid: 074b280ada04dcb469759d608c944564, type: 3}
   shot: {fileID: 8300000, guid: 0c8679280a58a754392bba99bc635567, type: 3}
   gunPoint: {fileID: 208}
   mesh: {fileID: 131}

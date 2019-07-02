@@ -24,6 +24,7 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
     bool gameOver;
     public int kills;
 
+    public AudioClip hurt;
     public AudioClip shot;
     public GameObject gunPoint;
     public GameObject mesh;
@@ -245,6 +246,17 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
         asourc.PlayOneShot(shot, 0.5f);
     }
 
+    public void RequestHurtSound()
+    {
+        _view.RPC("ShotSound", RpcTarget.All);
+    }
+
+    [PunRPC]
+    void HurtSound()
+    {
+        asourc.PlayOneShot(hurt, 0.5f);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<Bullet>() == null) return; //Si no tiene el componente bala, retorno
@@ -254,6 +266,7 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
         {
             //ServerNetwork.Instance.PlayerRequestTakeDamage(PhotonNetwork.LocalPlayer, 10);
             ServerTakeDamage(10);
+            RequestHurtSound();
             other.GetComponent<Bullet>().DestroyThisBullet(); //Destruyo la bala
             if (life <= 0)
             {

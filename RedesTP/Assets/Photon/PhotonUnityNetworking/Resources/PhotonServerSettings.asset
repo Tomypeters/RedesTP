@@ -62,5 +62,6 @@ MonoBehaviour:
   - SetName
   - SyncName
   - ShotSound
+  - HurtSound
   DisableAutoOpenWizard: 1
   ShowSettings: 1
