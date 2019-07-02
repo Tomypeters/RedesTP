@@ -5,9 +5,11 @@ using Photon.Pun;
 using Photon.Realtime;
 using System.Linq;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
 {
+    AudioSource asourc;
     PhotonView _view; //Referencia al PhotonView para poder sincronizar
     int _life; //Mi vida
     Animator _anim; //Referencia al animator
@@ -22,6 +24,7 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
     bool gameOver;
     public int kills;
 
+    public AudioClip shot;
     public GameObject gunPoint;
     public GameObject mesh;
     public GameObject head;
@@ -39,6 +42,7 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
     {
         _view = GetComponent<PhotonView>(); //Obtengo el View
         _anim = GetComponent<Animator>(); //Obtengo el Animator
+        asourc = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
         _life = 3; //Seteo mi vida
         kills = 0;
@@ -226,6 +230,7 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
             bullet.GetComponent<Bullet>().shooter = this;
             StartCoroutine(WaitToShootAgain());
             canShoot = false;
+            asourc.PlayOneShot(shot, 0.5f);
         }
     }
 
