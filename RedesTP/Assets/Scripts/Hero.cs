@@ -88,6 +88,7 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
             if (life <= 0)
             {
                 Defeat();
+                head.SetActive(true);
             }
         }
 
