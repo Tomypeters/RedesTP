@@ -89,10 +89,6 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
             PhotonNetwork.Disconnect(); //Me desconecto
     }
 
-
-
-
-
     [PunRPC]
     void SyncName(string name)
     {
@@ -115,7 +111,6 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
         _view.RPC("SetName", RpcTarget.AllBuffered, name);
     }
 
-
     [PunRPC]
     void AddKill()
     {
@@ -126,16 +121,6 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
     {
         _view.RPC("AddKill", RpcTarget.All);
     }
-
-
-
-
-
-
-
-
-
-
 
     [PunRPC]
     public void CheckIfClient(Player owner)
@@ -279,11 +264,6 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
     public void Win()
     {
         win.SetActive(true);
-    }
-
-    void LocalWin()
-    {
-
     }
 
     public void OnApplicationQuit()

@@ -12,11 +12,13 @@ public class ServerNetwork : MonoBehaviourPun //Va a ser el Server de nuestro Fu
     PhotonView _view; //El PhotonView para que se sincronice
     public Dictionary<Player, Hero> players = new Dictionary<Player, Hero>(); //Diccionario para enlazar el jugador actual con su hero
     public Player serverReference; //Una referencia para saber quien es el servidor
+    public List<Transform> spawnPoints = new List<Transform>();
 
 
     private void Awake()
     {
         _view = GetComponent<PhotonView>(); //Obtengo el PhotonView
+        spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint").Select(x => x.transform).ToList();
 
         if (!Instance) //Si no asigne el singleton todavía
         {
@@ -39,7 +41,7 @@ public class ServerNetwork : MonoBehaviourPun //Va a ser el Server de nuestro Fu
                         Quaternion.identity).GetComponent<Hero>(); //Instancio el jugador
         players.Add(p, newHero); //Lo añado al diccionario enlazando el jugador con su Hero
         newHero.ServerCheckIfClient(p);
-        newHero.transform.position = new Vector3(Random.Range(-40, 40), 1, Random.Range(-25, 25));
+        newHero.transform.position = spawnPoints[Random.Range(0, spawnPoints.Count - 1)].position;
         
         //newHero.nameText.text = newHero.player_name;
         //newHero.ServerCreateControllers(p);
