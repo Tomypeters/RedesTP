@@ -1140,6 +1140,7 @@ MonoBehaviour:
   kills: 0
   hurt: {fileID: 8300000, guid: 074b280ada04dcb469759d608c944564, type: 3}
   shot: {fileID: 8300000, guid: 0c8679280a58a754392bba99bc635567, type: 3}
+  heal: {fileID: 8300000, guid: 244bc29c20d8b6f4bb2eddf06c4251c6, type: 3}
   gunPoint: {fileID: 208}
   mesh: {fileID: 131}
   head: {fileID: 161}

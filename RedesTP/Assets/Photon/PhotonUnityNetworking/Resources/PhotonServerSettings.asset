@@ -63,5 +63,6 @@ MonoBehaviour:
   - SyncName
   - ShotSound
   - HurtSound
+  - HealSound
   DisableAutoOpenWizard: 1
   ShowSettings: 1

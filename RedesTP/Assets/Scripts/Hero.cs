@@ -26,6 +26,7 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
 
     public AudioClip hurt;
     public AudioClip shot;
+    public AudioClip heal;
     public GameObject gunPoint;
     public GameObject mesh;
     public GameObject head;
@@ -257,6 +258,17 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
         asourc.PlayOneShot(hurt, 0.5f);
     }
 
+    public void RequestHealSound()
+    {
+        _view.RPC("HealSound", RpcTarget.All);
+    }
+
+    [PunRPC]
+    void HealSound()
+    {
+        asourc.PlayOneShot(heal, 0.5f);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (!_view.IsMine) return; //Si no soy yo, retorno
@@ -264,6 +276,7 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
         if (other.gameObject.layer == 9)
         {
             ServerTakeDamage(-50);
+            RequestHealSound();
         }
 
 
