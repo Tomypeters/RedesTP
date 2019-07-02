@@ -65,5 +65,6 @@ MonoBehaviour:
   - HurtSound
   - HealSound
   - Rotate
+  - Die
   DisableAutoOpenWizard: 1
   ShowSettings: 1

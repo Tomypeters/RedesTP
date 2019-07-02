@@ -293,7 +293,7 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
             if (life <= 0)
             {
                 ServerNetwork.Instance.RequestGameOver();
-                _view.RPC("Die", RpcTarget.AllBuffered);
+                
                 
             }
         }
@@ -318,6 +318,7 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
     public void Defeat()
     {
         defeat.SetActive(true);
+        _view.RPC("Die", RpcTarget.AllBuffered);
     }
 
     public void Win()
