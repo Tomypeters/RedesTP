@@ -22,6 +22,7 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
     GameObject win;
     Text lifeText;
     bool gameOver;
+    float y;
     public int kills;
 
     public AudioClip hurt;
@@ -177,8 +178,11 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
 
     public void CameraFollow()
     {
+        y += Input.GetAxis("Mouse Y");
+        float clampeo = Mathf.Clamp(y, -90, 90);
+
         cam.transform.position = cameraHolder.transform.position;
-        CameraRotation(new Vector3(-Input.GetAxis("Mouse Y"), 0, 0));
+        CameraRotation(new Vector3(clampeo, 0, 0));
     }
 
     public void CameraRotation(Vector3 y)
@@ -316,6 +320,7 @@ public class Hero : MonoBehaviourPun //El personaje de nuestros jugadores
     public void Defeat()
     {
         defeat.SetActive(true);
+        gameOver = true;
         var controlers = FindObjectsOfType<Controller>();
         foreach (var item in controlers)
         {
